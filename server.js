@@ -6,7 +6,7 @@ require('dotenv').config();
 const stripe = require("stripe")(process.env.products);
 const { YOUR_DOMAIN } = process.env;
 const { FRONT_END_BASE_URL } = process.env;
-
+const port = process.env.PORT
 // Creates a product in the Stripe API. It takes the product information, such as title and description, and 
 // metadata (such as product title and data ID) as input, and returns the product object created in the Stripe API
 async function createStripeProduct(product, options = {}) {
@@ -342,5 +342,5 @@ app.use("/cart", cartRoutes);
 
 // This line starts the server and listens on port 3001. The listen method takes two arguments: the first is the port number 
 // and the second is a callback function that logs a message to the console indicating that the server is running on the specified port.
-app.listen(3001, () => console.log("Running on port 3001"));
+app.listen(port, () => console.log("Running on port " + port));
 
